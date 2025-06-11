@@ -1,75 +1,90 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+// 定義型別
+interface Language {
+  value: string
+  text: string
+  img: string
+}
+
+// 反應式狀態
+const isPasswordVisible = ref(false)
+const isOptionsActive = ref(false)
+const selectedLanguage = ref<Language>({
+  value: 'zh',
+  text: '繁體中文',
+  img: '/assets/images/flag_TW.png'
+})
+
+// 表單資料
+const formData = ref({
+  account: '',
+  password: '',
+  authCode: '',
+  rememberMe: true
+})
+
+// 語言選項
+const languages: Language[] = [
+  {
+    value: 'zh',
+    text: '繁體中文',
+    img: '/assets/images/flag_TW.png'
+  },
+  {
+    value: 'en',
+    text: 'English',
+    img: '/assets/images/flag_USA.png'
+  },
+  {
+    value: 'jp',
+    text: '日本語',
+    img: '/assets/images/flag_JP.png'
+  }
+]
+
+// 方法
+const togglePasswordVisibility = () => {
+  isPasswordVisible.value = !isPasswordVisible.value
+}
+
+const toggleLanguageOptions = (event: Event) => {
+  event.stopPropagation()
+  isOptionsActive.value = !isOptionsActive.value
+}
+
+const selectLanguage = (lang: Language) => {
+  selectedLanguage.value = lang
+  isOptionsActive.value = false
+}
+
+const handleLogin = () => {
+  // 處理登入邏輯
+  navigateTo('/lobby')
+}
+
+// 監聽外部點擊以關閉下拉選單
+onMounted(() => {
+  document.addEventListener('click', () => {
+    isOptionsActive.value = false
+  })
+})
+
+// 頁面設定
 useHead({
   title: "百家樂",
   link: [
     {
       rel: "stylesheet",
       href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css",
-    },
-  ],
-  script: [
-    {
-      type: "text/javascript",
-      src: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js",
-    },
-    {
-      type: "text/javascript",
-      src: "/js/my_fun.js",
-    },
-  ],
-});
-
-onMounted(() => {
-  const loginSelectCustom = document.querySelector(".login__select-custom");
-  const selected = loginSelectCustom.querySelector(".selected");
-  const options = loginSelectCustom.querySelector(".options");
-  const hiddenInput = loginSelectCustom.querySelector(".sumbit_value");
-  const password_eye = document.querySelector('.login__member-password-eye');
-  const password_code = document.querySelector('.login__member-password-code');
-
-  // 切換下拉選單顯示/隱藏
-  selected.addEventListener("click", function (e) {
-    e.stopPropagation();
-    options.classList.toggle("active");
-  });
-
-  // 點選選項，更新畫面與隱藏欄位
-  const optionItems = options.querySelectorAll("li");
-  optionItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-      const img = item.querySelector("img").src;
-      const text = item.textContent.trim();
-      const value = item.dataset.value;
-
-      selected.querySelector("img").src = img;
-      selected.querySelector("span").textContent = text;
-      hiddenInput.value = value;
-
-      options.classList.remove("active");
-    });
-  });
-
-  // 點擊外部時關閉選單
-  document.addEventListener("click", function () {
-    options.classList.remove("active");
-  });
-
-  //點擊圖片換圖
-  password_eye.onclick = () => {
-    let mySrc = password_eye.getAttribute('src');
-    if (mySrc == "/assets/images/eye_op.png") {
-      password_eye.setAttribute('src', '/assets/images/eye_ed.png');
-      password_code.setAttribute('type', 'password');
-    } else {
-      password_eye.setAttribute('src', '/assets/images/eye_op.png');
-      password_code.setAttribute('type', 'text');
     }
-  }
-});
+  ]
+})
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="login wrapper">
     <div class="container login">
       <div class="row justify-content-center align-items-center">
         <div class="col col-sm-10 col-md-10 col-lg-6 col-xl-5">
@@ -125,7 +140,7 @@ onMounted(() => {
               <a href="#forgetModalToggle" class="text-decoration-none text-white" data-bs-toggle="modal">忘記密碼</a>
             </div>
             <div class="d-grid">
-              <button class="btn login__member-btn" onclick="javascript:location.href='lobby.html'">登入</button>
+              <button class="btn login__member-btn" onclick="javascript:location.href='/lobby'">登入</button>
             </div>
           </div>
         </div>
