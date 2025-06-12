@@ -8,7 +8,8 @@ useHead({
       href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css",
     }
   ]
-})</script>
+});
+</script>
 
 <template>
     <div class="game-chat wrapper">
