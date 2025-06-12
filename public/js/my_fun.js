@@ -310,9 +310,3 @@ function toggleFullScreen(elem) {
         }
     }
 }
-
-/* 顯示下注結果 */
-function dispalyResult($playObject) {
-    let playResult = document.querySelector($playObject);
-    playResult.classList.toggle('fade');
-}

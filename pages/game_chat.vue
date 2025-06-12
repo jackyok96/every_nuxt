@@ -9,6 +9,13 @@ useHead({
     }
   ]
 });
+
+function displayResult(selector: string) {
+  const el = document.querySelector(selector);
+  if (el) {
+    el.classList.toggle('d-none');
+  }
+}
 </script>
 
 <template>
@@ -469,13 +476,13 @@ useHead({
                                     </div>
                                     <div class="main__panel-btns">
                                         <div class="h-100 d-flex justify-content-center align-items-center">
-                                            <div class="btn rounded-pill" @onClick="dispalyResult('.play-pageLoading2');">
+                                            <div class="btn rounded-pill" @click="displayResult('.play-pageLoading2');">
                                                 <i class="fa-solid fa-xmark"></i>
                                             </div>
-                                            <div class="btn rounded-pill" @onClick="dispalyResult('.play-pageLoading');">
+                                            <div class="btn rounded-pill" @click="displayResult('.play-pageLoading');">
                                                 <i class="fa-solid fa-xmark"></i>2
                                             </div>
-                                            <div class="btn rounded-pill" @onClick="dispalyResult('.play-result');">
+                                            <div class="btn rounded-pill" @click="displayResult('.play-result');">
                                                 <i class="fa-solid fa-check"></i>
                                             </div>
                                         </div>
@@ -700,6 +707,255 @@ useHead({
             </div>
         </div>
     </div>
+<!-- 彈跳視窗 -->
+<div class="modal fade" id="reportModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="titleModalToggleLabel">遊戲報表</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="modal-content-dateBtn">
+                    <li><a href="#" class="btn active">今日</a></li>
+                    <li><a href="#" class="btn">昨日</a></li>
+                    <li><a href="#" class="btn">本週</a></li>
+                </ul>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" id="profileTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="bet-tab" data-bs-toggle="tab" data-bs-target="#bet"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">
+                            <a href="#">
+                                投注報表
+                            </a>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false">
+                            <a href="#">
+                                額度報表
+                            </a>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reward-tab" data-bs-toggle="tab" data-bs-target="#reward"
+                            type="button" role="tab" aria-controls="reward" aria-selected="false">
+                            <a href="#">
+                                打賞報表
+                            </a>
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="bet" role="tabpanel" aria-labelledby="bet-tab">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-bordered table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">序號</th>
+                                        <th scope="col">局號</th>
+                                        <th scope="col">遊戲大廳</th>
+                                        <th scope="col">台桌名稱</th>
+                                        <th scope="col">結算時間(GMT+8)</th>
+                                        <th scope="col">下注金額</th>
+                                        <th scope="col">有效下注額</th>
+                                        <th scope="col">結果</th>
+                                        <th scope="col">輸贏</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="">
+                                        <td scope="row">1</td>
+                                        <td class="Bureau">1234567890</td>
+                                        <td>現場廳</td>
+                                        <td>百家樂 A01</td>
+                                        <td>2024-08-18 14:11:22</td>
+                                        <td>10,000</td>
+                                        <td>10,000</td>
+                                        <td class="res">莊(8)</td>
+                                        <td class="res">-10,000</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td scope="row">2</td>
+                                        <td class="Bureau">1234567891</td>
+                                        <td>現場廳</td>
+                                        <td>百家樂 A02</td>
+                                        <td>2024-08-18 14:10:22</td>
+                                        <td>10,000</td>
+                                        <td>10,000</td>
+                                        <td class="green">閒(5)</td>
+                                        <td class="green">10,000</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td scope="row">3</td>
+                                        <td class="Bureau">1234567892</td>
+                                        <td>現場廳</td>
+                                        <td>百家樂 A03</td>
+                                        <td>2024-08-18 14:09:22</td>
+                                        <td>20,000</td>
+                                        <td>20,000</td>
+                                        <td class="res">莊(6)</td>
+                                        <td class="res">-10,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="fw-bold text-right">小計</td>
+                                        <td>86,000</td>
+                                        <td></td>
+                                        <td colspan="2" class="green">-6,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="fw-bold text-right">總計</td>
+                                        <td>86,000</td>
+                                        <td></td>
+                                        <td colspan="2" class="res">-8,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-bordered table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">序號</th>
+                                        <th scope="col">交易編號</th>
+                                        <th scope="col">交易類型</th>
+                                        <th scope="col">操作時間(GMT+8)</th>
+                                        <th scope="col">交易前餘額</th>
+                                        <th scope="col">收入</th>
+                                        <th scope="col">支出</th>
+                                        <th scope="col">交易後餘額</th>
+                                        <th scope="col">備註</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="">
+                                        <td scope="row">1</td>
+                                        <td class="Bureau">1234567890</td>
+                                        <td>登入紀錄</td>
+                                        <td>2024-08-19 14:10:22</td>
+                                        <td class="green">1,200,000</td>
+                                        <td>0</td>
+                                        <td class="res">-10,000</td>
+                                        <td>1,190,000</td>
+                                        <td>etc</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td scope="row">2</td>
+                                        <td class="Bureau">1234567890</td>
+                                        <td>轉入</td>
+                                        <td>2024-08-19 14:10:22</td>
+                                        <td class="green">1,190,000</td>
+                                        <td>10,000</td>
+                                        <td class="res">0</td>
+                                        <td>1,200,000</td>
+                                        <td>etc</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td scope="row">3</td>
+                                        <td class="Bureau">1234567890</td>
+                                        <td>登入紀錄</td>
+                                        <td>2024-08-19 14:10:22</td>
+                                        <td class="green">1,200,000</td>
+                                        <td>0</td>
+                                        <td class="res">-10,000</td>
+                                        <td>1,190,000</td>
+                                        <td>etc</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="fw-bold text-right">小計</td>
+                                        <td>86,000</td>
+                                        <td></td>
+                                        <td colspan="2" class="green">-6,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="fw-bold text-right">總計</td>
+                                        <td>86,000</td>
+                                        <td></td>
+                                        <td colspan="2" class="res">-8,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="reward" role="tabpanel" aria-labelledby="reward-tab">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-bordered table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">序號</th>
+                                        <th scope="col">訂單編號</th>
+                                        <th scope="col">結算時間</th>
+                                        <th scope="col">台桌名稱</th>
+                                        <th scope="col">支出</th>
+                                        <th scope="col">荷官</th>
+                                        <th scope="col">項目</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="">
+                                        <td scope="row">1</td>
+                                        <td class="Bureau">1234567890</td>
+                                        <td>2024-08-20 14:10:29</td>
+                                        <td>百家樂 A02</td>
+                                        <td>10,000</td>
+                                        <td>Aerry</td>
+                                        <td>內容不知</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td scope="row">2</td>
+                                        <td class="Bureau">1234567891</td>
+                                        <td>2024-08-20 14:10:28</td>
+                                        <td>百家樂 A01</td>
+                                        <td>10,000</td>
+                                        <td>Berry</td>
+                                        <td>內容不知</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="fw-bold text-right">小計</td>
+                                        <td>86,000</td>
+                                        <td></td>
+                                        <td colspan="2" class="green">-6,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="fw-bold text-right">總計</td>
+                                        <td>86,000</td>
+                                        <td></td>
+                                        <td colspan="2" class="res">-8,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-between text-white">
+                <dl class="d-flex w-25">
+                    <dt>該頁顯示：</dt>
+                    <dd>10</dd>
+                    <dt class="ms-auto">共計：</dt>
+                    <dd>10</dd>
+                </dl>
+                <ul class="pagination text-white w-25 d-flex justify-content-between">
+                    <li><a href="#"><i class="fa-solid fa-backward"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-backward-step"></i></a></li>
+                    <li> 1 / 1 </li>
+                    <li><a href="#"><i class="fa-solid fa-forward-step"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-forward"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>    
 </template>
 
 <style scoped></style>
