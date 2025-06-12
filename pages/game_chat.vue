@@ -18,7 +18,7 @@ useHead({
                 <div class="col-md-2 aside">
                     <div class="img-group text-center">
                         <!-- logo 圖 -->
-                        <a href="lobby.html">
+                        <a href="/lobby">
                             <img class="img-fluid m-auto aside__logo" alt="Bootstrap Image Preview"
                                 src="/assets/images/logo.png" />
                         </a>
@@ -295,7 +295,7 @@ useHead({
                             <div class="d-flex main__header justify-content-between align-items-center">
 
                                 <div class="main__header-toggle">
-                                    <a class="main__header-toggle-btn" href="#">
+                                    <a class="main__header-toggle-btn" href="/">
                                         <img src="/assets/images/back_btn.png" alt="" class="img-fluid">
                                     </a>
                                     <p class="main__header-toggle-user">
@@ -468,13 +468,13 @@ useHead({
                                     </div>
                                     <div class="main__panel-btns">
                                         <div class="h-100 d-flex justify-content-center align-items-center">
-                                            <div class="btn rounded-pill" onClick="dispalyResult('.play-pageLoading2');">
+                                            <div class="btn rounded-pill" @onClick="dispalyResult('.play-pageLoading2');">
                                                 <i class="fa-solid fa-xmark"></i>
                                             </div>
-                                            <div class="btn rounded-pill" onClick="dispalyResult('.play-pageLoading');">
+                                            <div class="btn rounded-pill" @onClick="dispalyResult('.play-pageLoading');">
                                                 <i class="fa-solid fa-xmark"></i>2
                                             </div>
-                                            <div class="btn rounded-pill" onClick="dispalyResult('.play-result');">
+                                            <div class="btn rounded-pill" @onClick="dispalyResult('.play-result');">
                                                 <i class="fa-solid fa-check"></i>
                                             </div>
                                         </div>

@@ -20,7 +20,7 @@ useHead({
         <div class="col-md-2 aside">
           <div class="img-group text-center">
             <!-- logo 圖 -->
-            <a href="lobby.html">
+            <a href="/lobby">
               <img class="img-fluid m-auto aside__logo" alt="Bootstrap Image Preview" src="/assets/images/logo.png" />
             </a>
             <!-- 人像圖 -->
@@ -46,7 +46,7 @@ useHead({
                 </label>
                 <div class="aside__member-btn">
                   <button type="button" class="form-control btn aside__member-btn-classic"
-                    onclick="location.href='game_chat.html'">
+                    onclick="location.href='/game_chat'">
                     經典廳
                   </button>
                   <button type="button" class="form-control btn aside__member-btn-multiple">
@@ -395,7 +395,7 @@ useHead({
                       <a href="#"><img src="/assets/images/game_btn.png" alt="">遊戲規則</a>
                     </li>
                     <li class="list-item">
-                      <a href="index.html"><img src="/assets/images/logout_icon.png" alt="">登出</a>
+                      <a href="/index"><img src="/assets/images/logout_icon.png" alt="">登出</a>
                     </li>
                   </ol>
                   <!-- 聊天室 -->

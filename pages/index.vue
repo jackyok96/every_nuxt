@@ -147,6 +147,45 @@ useHead({
       </div>
     </div>
   </div>
+
+  <!-- 彈跳視窗 -->
+<div class="modal fade" id="forgetModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalToggleLabel">請更改密碼</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control my-4" placeholder="請輸入新密碼">
+                <input type="password" class="form-control" placeholder="再次輸入新密碼">
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn modal-btn" data-bs-target="#forgetModalToggle2" data-bs-toggle="modal"
+                    data-bs-dismiss="modal">確定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="forgetModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">修改訊息</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                修改成功
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn modal-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                    data-bs-dismiss="modal">結束</button>
+            </div>
+        </div>
+    </div>
+</div>
 </template>
 
 <style scoped></style>

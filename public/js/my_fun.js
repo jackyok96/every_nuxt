@@ -12,7 +12,7 @@ window.onload = () => {
         // const switch_img = document.querySelector(".main__header-toggle-btn img");
         // switch_img.classList.toggle("close--active");
 
-        window.location.href = "index.html";
+        window.location.href = "/index";
     });
 
     /* //「切換投注視窗」按鈕 */
