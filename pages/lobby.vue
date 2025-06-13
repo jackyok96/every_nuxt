@@ -395,7 +395,7 @@ useHead({
                       <a href="#"><img src="/assets/images/game_btn.png" alt="">遊戲規則</a>
                     </li>
                     <li class="list-item">
-                      <a href="/index"><img src="/assets/images/logout_icon.png" alt="">登出</a>
+                      <a href="/"><img src="/assets/images/logout_icon.png" alt="">登出</a>
                     </li>
                   </ol>
                   <!-- 聊天室 -->
